@@ -1,11 +1,11 @@
 # Today I (want to) learn
 
-* Git submodule details ...
-    * What are sub-commands of submodule?
-    * What does they do?
-    * Can I "pin" to specific version?
-    * What is the typical workflow?
-    * What happen when "submodule" got updated?
+* [Git submodule](./git/submodule.md) details ...
+    * [ ] What is the typical workflow?
+    * [x] What are sub-commands of submodule?
+    * [ ] What does they do?
+    * [ ] Can I "pin" to specific version?
+    * [ ] What happen when "submodule" got updated?
 
 * Go project setup + build
     * What's the recommanded project setup?
