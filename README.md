@@ -36,6 +36,7 @@
 * JS refactoring, patterns
 * svelte
 * Rust
+* CA? / root CA? / certificate? / pem?
 
 ---
 
