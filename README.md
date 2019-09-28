@@ -7,6 +7,18 @@
     * [ ] Can I "pin" to specific version?
     * [ ] What happen when "submodule" got updated?
 
+* HTML paste
+    * Stackoverflow: https://stackoverflow.com/questions/6333814/how-does-the-paste-image-from-clipboard-functionality-work-in-gmail-and-google-c
+    * [codepen](https://codepen.io/redeyes2015/pen/bGbydPX?editors=1011)
+    * [MDN: paste event](https://developer.mozilla.org/en-US/docs/Web/API/Element/paste_event)
+        > an editable context (for example, in a <textarea> or an element with contenteditable attribute set to true)
+        * `window.onpaste` would not work
+    * [MDN: clipboardData](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/clipboardData)
+        * not sure why Stackoverflow example mentions `event.originalEvent.clipboardData` is needed
+            * [ ] TODO
+    * "getText" can receive `text/html`; probably how formatted text is pasted?
+    
+    
 * Go project setup + build
     * What's the recommanded project setup?
     * How does glide find nested dependencies?
