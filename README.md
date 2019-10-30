@@ -7,6 +7,10 @@
     * [ ] Can I "pin" to specific version?
     * [ ] What happen when "submodule" got updated?
 
+* Svelte
+    * reactivity by assign (`foo = updatedFoo`)
+    * [x] a simple app: [battle-cat](https://github.com/redeyes2015/battle-cats/)
+
 * Go project setup + build
     * What's the recommanded project setup?
     * How does glide find nested dependencies?
@@ -34,7 +38,6 @@
 
 * vim script?
 * JS refactoring, patterns
-* svelte
 * Rust
 * CA? / root CA? / certificate? / pem?
 
