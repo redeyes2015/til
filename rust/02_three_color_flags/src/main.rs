@@ -54,7 +54,19 @@ fn arrange (flags : & mut [u8]) {
 }
 
 fn main() {
+    // ver 1
     let mut flags = b"BRWBWR".to_vec();
     arrange(flags.as_mut_slice());
-    println!("{}", String::from_utf8(flags).unwrap());
+    println!("{:?}", String::from_utf8(flags).unwrap());
+
+    // ver 2
+    //let mut flags = String::from("BRWBWR");
+    //let mut flags = unsafe { flags.as_bytes_mut() };
+    //arrange(flags);
+    //println!("{:?}", std::str::from_utf8_mut(&mut flags).unwrap());
+
+    // ver 3
+    //let flags : &mut [u8;6] = &mut [b'B', b'R', b'W', b'B', b'W', b'R'];
+    //arrange(flags);
+    //println!("{:?}", std::str::from_utf8_mut(&mut flags[..]).unwrap());
 }

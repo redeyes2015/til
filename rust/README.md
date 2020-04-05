@@ -31,3 +31,34 @@
 6. `{:?}` 需要 `trait Debug` ... 效果類似 golang 的 `%v` ?
 
 [swap]: https://doc.rust-lang.org/std/vec/struct.Vec.html#method.swap
+
+
+看起來最應該寫的版本:
+
+```rust
+    // ver 1
+    let mut flags = b"BRWBWR".to_vec();
+    arrange(flags.as_mut_slice());
+    println!("{:?}", String::from_utf8(flags).unwrap());
+```
+
+所以... String 有個 [as_bytes_mut] 但是是 unsafe
+
+[as_bytes_mut]: https://doc.rust-lang.org/std/string/struct.String.html#method.as_bytes_mut
+
+```rust
+    // ver 2
+    let mut flags = String::from("BRWBWR");
+    let mut flags = unsafe { flags.as_bytes_mut() };
+    arrange(flags);
+    println!("{:?}", std::str::from_utf8_mut(&mut flags).unwrap());
+```
+
+byte string literal 怎樣找不到變成 mut 的方法... 但是用 array literal 可以
+
+```rust
+    // ver 3
+    let flags : &mut [u8;6] = &mut [b'B', b'R', b'W', b'B', b'W', b'R'];
+    arrange(flags);
+    println!("{:?}", std::str::from_utf8_mut(&mut flags[..]).unwrap());
+```
