@@ -62,3 +62,37 @@ byte string literal 怎樣找不到變成 mut 的方法... 但是用 array liter
     arrange(flags);
     println!("{:?}", std::str::from_utf8_mut(&mut flags[..]).unwrap());
 ```
+
+04 maze
+=======
+
+1. 沒找到文件，但是可以用 nested use + as:
+
+```rust
+use MazeCell::{
+    Wall as W,
+    PathTaken as T,
+    PathUntaken as U,
+};
+```
+
+2. slice 的單位一定要是固定大小，所以好像只能用 `Vec` ?
+
+3. 支援用 `{}` 印出一個 type 的方法: implement [std::fmt::Display] trait:
+
+[std::fmt::Display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
+
+```rust
+use std::fmt;
+impl fmt::Display for MazeCell {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            W => write!(f, "W"),
+            T => write!(f, "T"),
+            U => write!(f, "U"),
+        }
+    }
+}
+
+4. 可以用 `for v in vecotr.iter()` 來 traverse `Vec`
+```
