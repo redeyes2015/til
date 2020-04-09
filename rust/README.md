@@ -63,7 +63,7 @@ byte string literal 怎樣找不到變成 mut 的方法... 但是用 array liter
     println!("{:?}", std::str::from_utf8_mut(&mut flags[..]).unwrap());
 ```
 
-04 maze
+03 maze
 =======
 
 1. 沒找到文件，但是可以用 nested use + as:
@@ -96,3 +96,22 @@ impl fmt::Display for MazeCell {
 
 4. 可以用 `for v in vecotr.iter()` 來 traverse `Vec`
 ```
+05 Knight tour
+==============
+
+1. `array[i]` 的 i 一定要是 `usize，可以用` `array[i as usize]` 來強迫轉型
+
+2. 歡樂的 closure : `.filter(|x| predicate(x))`；在不用管 closure type 的狀況下，很簡單就可以用，跟 JS 差不多?
+
+3. `.iter()` 丟給出來的好像會是 reference，可以用 `*` deref 複製出來?
+
+4. 如果在 fluent 寫法裡面重複用到 mutable reference 會被擋下來，例如下面的 `is_visitable` 和 `count_next_visitable` 如果都宣告要用 `&mut` 的話，就會無法通過
+
+```rust
+    let next_step = gen_next_steps(x, y).iter()
+        .map(|(nx, ny)| (*nx, *ny, next_count(board, *nx, *ny)))
+        .min_by_key(|(_, _, next)| *next);
+```
+
+5. 可以用 shadowing 重新宣告成 mutable: `let mut x = x;`
+
